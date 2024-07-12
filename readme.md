@@ -16,6 +16,7 @@ This is a simple Hotel CRUD (Create, Read, Update, Delete) application built wit
 - **Frontend**: Next.js, Tailwind CSS
 - **Backend**: Express.js
 - **Database**: MySQL (via XAMPP)
+- **Prisma**: ORM
 - **Environment Variables**: `.env` file for database connection
 
 ## Getting Started
