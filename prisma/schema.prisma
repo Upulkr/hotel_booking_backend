@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Booking {
+  id        String   @id @default(uuid())
+  checkIn   String
+  checkOut  String
+  userId    String
+  phone     String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  price     String
+  adults    String
+  children  String
+  rooms     String
+  hotelName String
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([id, userId])
+  @@index([userId])
+  @@map("bookings")
+}
